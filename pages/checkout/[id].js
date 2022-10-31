@@ -1,12 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import moment from 'moment';
-import Head from 'next/head';
-import Footer from '../../components/Footer';
-import FormCheckout from '../../components/FormCheckout';
-import Navbar from '../../components/Navbar';
-import { getData } from '../../utils/fetchData';
-import { formatDate } from '../../utils/formatDate';
-import { useRouter } from 'next/router';
+import moment from "moment";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import { Footer } from "../../components/Footer";
+import { FormCheckout } from "../../components/FormCheckout";
+import { Navbar } from "../../components/Navbar";
+import { getData } from "../../utils/fetchData";
+import { formatDate } from "../../utils/formatDate";
+
 
 export default function Checkout({ detailPage }) {
   const router = useRouter();
@@ -42,7 +43,7 @@ export default function Checkout({ detailPage }) {
               </div>
               <div className='d-flex align-items-center gap-3'>
                 <img src='/icons/ic-time-white.svg' alt='' />
-                <span> {moment(detailPage.date).format('HH.MM A')}</span>
+                <span>{moment(detailPage.date).format('HH.MM A')}</span>
               </div>
               <div className='d-flex align-items-center gap-3'>
                 <img src='/icons/ic-calendar-white.svg' alt='' />

@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { postData, putData } from '../../utils/fetchData';
 import { toast } from 'react-toastify';
 
-export const FormSignin = () => {
+export const FormSignup = () => {
   const router = useRouter();
   const { keyword } = router.query;
   const [otp, setOtp] = useState('');
