@@ -8,8 +8,7 @@ export default function NavLink({ href, name }) {
   return (
     <Link
       className={`nav-link  ${router.pathname === href ? "active" : ""}`}
-      href="/"
-      legacyBehavior
+      href={href}
     >
       {name}
     </Link>
