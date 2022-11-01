@@ -3,16 +3,9 @@ import { CardTitle } from "../CardTitle";
 import Link from "next/link";
 import { formatDate } from "../../utils/formatDate";
 import { Fragment } from "react";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 export const CardEvent = ({ data, title, subTitle }) => {
-
-  // Mengubah Format Mata uang
-  const formatCurrency = (nominal) => {
-    return nominal.toLocaleString("id-ID", {
-      style: "currency",
-      currency: "IDR",
-    });
-  };
 
   return (
     <section className="grow-today">

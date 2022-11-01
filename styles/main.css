@@ -467,9 +467,15 @@ footer .all-rights {
   height: max-content;
   margin-top: 2rem;
 }
-.details-content .card-event h6 {
+.details-content .card-event h5 {
   color: #151A26;
   font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+.details-content .card-event h6 {
+  color: #151A26;
+  font-size: 16px;
   font-weight: 500;
   margin-bottom: 0;
 }
@@ -487,13 +493,35 @@ footer .all-rights {
   margin: 30px 0;
   color: #DFDFDF;
 }
+.details-content .card-event .typeEvent {
+  display:  flex;
+  flex-direction: column;
+  background: white;
+  margin-bottom: 0.5rem;
+  padding: 0.7rem 0;
+  width: 100%;
+  border-radius: 8px;
+}
+.details-content .card-event .typeEvent .type-name {
+  color:  #151A26;
+  margin-bottom: 0.7rem;
+}
+.details-content .card-event .typeEvent .typeEvent-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+
 .details-content .card-event .price {
-  color: #151A26;
-  font-size: 42px;
+  color: #04c92b;
+  font-size: 16px;
   font-weight: 700;
+  margin-right: 2rem;
 }
 .details-content .card-event .price span {
-  font-size: 16px;
+  font-size: 12px;
 }
 .details-content .card-event .card-details {
   color: #151A26;
@@ -501,9 +529,17 @@ footer .all-rights {
   font-weight: 400;
   margin-bottom: 16px;
 }
-.details-content .card-event .btn-green {
-  margin-top: 14px;
-  width: 302px;
+.details-content .card-event .btn-event {
+  background: #01fb34;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.5s
+}
+.details-content .card-event .btn-event:hover {
+  background: #03e02f;
 }
 
 @media (max-width: 1200px) {
@@ -520,7 +556,7 @@ footer .all-rights {
   }
 
   .details-content .card-event {
-    margin: 0 auto;
+    width: 100%;
   }
 }
 @media (max-width: 500px) {
@@ -558,10 +594,6 @@ footer .all-rights {
   font-size: 32px;
   font-weight: 600;
 }
-.checkout .event-details {
-  margin-top: 70px;
-  margin-bottom: 50px;
-}
 .checkout .event-details .event-image {
   border-radius: 30px;
   -o-object-fit: cover;
@@ -581,7 +613,6 @@ footer .all-rights {
   border-bottom: 5px double #FFFFFF;
   font-weight: 700;
   font-size: 42px;
-  margin-left: 70px;
 }
 .checkout form .form-title {
   font-size: 20px;
@@ -622,9 +653,6 @@ footer .all-rights {
   .checkout .event-details .event-image {
     width: 100%;
     height: 255px;
-  }
-  .checkout .event-details .total-price {
-    margin: 0 auto;
   }
 }
 .login.header {

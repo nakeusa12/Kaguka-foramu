@@ -12,9 +12,12 @@ import { getData } from "../../utils/fetchData";
 import moment from "moment/moment";
 import { formatDate } from "../../utils/formatDate";
 import { CardEvent } from "../../components/CardEvent";
+import { formatCurrency } from "../../utils/formatCurrency";
 
 export default function DetailId({ detailPage, id }) {
   const [data, setData] = useState([]);
+
+  console.log(detailPage.tickets);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -106,13 +109,16 @@ export default function DetailId({ detailPage, id }) {
           </div>
 
           <div className="d-flex flex-column card-event">
+            <div>
+
+            </div>
             <h6>Your Speaker</h6>
             <div className="d-flex align-items-center gap-3 mt-3">
               <img
                 src={`${process.env.NEXT_PUBLIC_API}/${detailPage?.talent?.image?.name}`}
                 alt="speaker"
                 width="60"
-                style={{ borderRadius: '50%'}}
+                style={{ borderRadius: "50%" }}
               />
               <div>
                 <div className="speaker-name">{detailPage?.talent?.name}</div>
@@ -121,39 +127,45 @@ export default function DetailId({ detailPage, id }) {
             </div>
             <hr />
 
-            <h6>Get Ticket</h6>
+            <div className="d-flex gap-3 align-items-center card-details">
+              <img src="/icons/ic-marker.svg" alt="semina" />{" "}
+              {detailPage.venueName}
+            </div>
+            <div className="d-flex gap-3 align-items-center card-details">
+              <img src="/icons/ic-time.svg" alt="semina" />{" "}
+              {moment(detailPage.date).format("HH.MM A")}
+            </div>
+            <div className="d-flex gap-3 align-items-center card-details">
+              <img src="/icons/ic-calendar.svg" alt="semina" />{" "}
+              {formatDate(detailPage.date)}
+            </div>
+            <hr />
+            <h5 className="mb-3">Ticket Type</h5>
+
             {detailPage.tickets.map((ticket, index) => (
               <Fragment key={index}>
                 {ticket.statusTicketCategories ? (
-                  <>
-                    <div className="price my-3">
-                      {ticket.price === 0 ? "free" : `$${ticket.price}`}
-                      <span>/person</span>
+                  <div className="typeEvent">
+                    <h6 className="type-name">{ticket.type}</h6>
+                    <div className="typeEvent-detail">
+                      <div className="price">
+                        {ticket.price === 0
+                          ? "free"
+                          : `${formatCurrency(ticket.price)}`}
+                        <span>/person</span>
+                      </div>
+                      {detailPage.stock !== 0 && (
+                        <Button
+                          action={() =>
+                            handleSubmit(ticket._id, detailPage.organizer)
+                          }
+                          className="btn-event"
+                        >
+                          JOIN NOW
+                        </Button>
+                      )}
                     </div>
-                    <div className="d-flex gap-3 align-items-center card-details">
-                      <img src="/icons/ic-marker.svg" alt="semina" />{" "}
-                      {detailPage.venueName}
-                    </div>
-                    <div className="d-flex gap-3 align-items-center card-details">
-                      <img src="/icons/ic-time.svg" alt="semina" />{" "}
-                      {moment(detailPage.date).format("HH.MM A")}
-                    </div>
-                    <div className="d-flex gap-3 align-items-center card-details">
-                      <img src="/icons/ic-calendar.svg" alt="semina" />{" "}
-                      {formatDate(detailPage.date)}
-                    </div>
-
-                    {detailPage.stock !== 0 && (
-                      <Button
-                        variant={"btn-green"}
-                        action={() =>
-                          handleSubmit(ticket._id, detailPage.organizer)
-                        }
-                      >
-                        Join Now
-                      </Button>
-                    )}
-                  </>
+                  </div>
                 ) : (
                   ""
                 )}

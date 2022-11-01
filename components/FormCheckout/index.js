@@ -1,21 +1,22 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
-import React, { useState, useEffect } from 'react';
-import Button from '../Button';
-import { useRouter } from 'next/router';
-import { getData, postData } from '../../utils/fetchData';
-import Cookies from 'js-cookie';
-import { toast } from 'react-toastify';
+import React, { useState, useEffect } from "react";
+import Button from "../Button";
+import { useRouter } from "next/router";
+import { getData, postData } from "../../utils/fetchData";
+import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 
 export const FormCheckout = ({ tickets }) => {
   const router = useRouter();
   const { ticketId, organizer } = router.query;
 
   const [form, setForm] = useState({
-    email: '',
-    lastName: '',
-    firstName: '',
-    role: '',
-    payment: '',
+    email: "",
+    lastName: "",
+    firstName: "",
+    role: "",
+    payment: "",
     event: router.query.id,
   });
 
@@ -27,7 +28,7 @@ export const FormCheckout = ({ tickets }) => {
         const res = await getData(
           `api/v1/payments/${organizer}`,
           {},
-          Cookies.get('token')
+          Cookies.get("token")
         );
         res.data.forEach((res) => {
           res.isChecked = false;
@@ -40,7 +41,7 @@ export const FormCheckout = ({ tickets }) => {
   }, []);
 
   useEffect(() => {
-    let paymentId = '';
+    let paymentId = "";
     payments.filter((payment) => {
       if (payment.isChecked) {
         paymentId = payment._id;
@@ -83,14 +84,14 @@ export const FormCheckout = ({ tickets }) => {
         },
       };
       const res = await postData(
-        'api/v1/checkout',
+        "api/v1/checkout",
         payload,
-        Cookies.get('token')
+        Cookies.get("token")
       );
 
       if (res.data) {
-        toast.success('berhasil checkout', {
-          position: 'top-right',
+        toast.success("berhasil checkout", {
+          position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -98,7 +99,7 @@ export const FormCheckout = ({ tickets }) => {
           draggable: true,
           progress: undefined,
         });
-        router.push('/dashboard');
+        router.push("/dashboard");
       }
     } catch (err) {}
   };
@@ -118,71 +119,71 @@ export const FormCheckout = ({ tickets }) => {
   };
 
   return (
-    <form action='' className='container form-semina'>
-      <div className='personal-details'>
-        <div className='row row-cols-lg-8 row-cols-md-2 row-cols-1 justify-content-lg-center'>
-          <div className='form-title col-lg-8'>
+    <form action="" className="container form-semina">
+      <div className="personal-details">
+        <div className="row row-cols-lg-8 row-cols-md-2 row-cols-1">
+          <div className="form-title col-lg-8">
             <span>01</span>
             <div>Personal Details</div>
           </div>
         </div>
-        <div className='row row-cols-lg-8 row-cols-md-2 row-cols-1 justify-content-center'>
-          <div className='mb-4 col-lg-4'>
-            <label htmlFor='first_name' className='form-label'>
+        <div className="row row-cols-lg-8 row-cols-md-2 row-cols-1">
+          <div className="mb-4 col-lg-6">
+            <label htmlFor="first_name" className="form-label">
               First Name
             </label>
             <input
-              type='text'
-              placeholder='First name here'
-              className='form-control'
-              id='first_name'
-              name='firstName'
+              type="text"
+              placeholder="First name here"
+              className="form-control"
+              id="first_name"
+              name="firstName"
               value={form.firstName}
               onChange={handleChange}
             />
           </div>
 
-          <div className='mb-4 col-lg-4'>
-            <label htmlFor='last_name' className='form-label'>
+          <div className="mb-4 col-lg-6">
+            <label htmlFor="last_name" className="form-label">
               Last Name
             </label>
             <input
-              type='text'
-              placeholder='Last name here'
-              className='form-control'
-              name='lastName'
-              id='last_name'
+              type="text"
+              placeholder="Last name here"
+              className="form-control"
+              name="lastName"
+              id="last_name"
               value={form.lastName}
               onChange={handleChange}
             />
           </div>
         </div>
-        <div className='row row-cols-lg-8 row-cols-md-2 row-cols-12 justify-content-center'>
-          <div className='mb-4 col-lg-4'>
-            <label htmlFor='email_address' className='form-label'>
+        <div className="row row-cols-lg-8 row-cols-md-2 row-cols-12">
+          <div className="mb-4 col-lg-6">
+            <label htmlFor="email_address" className="form-label">
               Email
             </label>
             <input
-              type='email'
-              className='form-control'
-              id='email_address'
-              placeholder='semina@bwa.com'
-              name='email'
+              type="email"
+              className="form-control"
+              id="email_address"
+              placeholder="semina@bwa.com"
+              name="email"
               value={form.email}
               onChange={handleChange}
             />
           </div>
 
-          <div className='mb-4 col-lg-4'>
-            <label htmlFor='exampleFormControlInput1' className='form-label'>
+          <div className="mb-4 col-lg-6">
+            <label htmlFor="exampleFormControlInput1" className="form-label">
               Role
             </label>
             <input
-              type='text'
-              className='form-control'
-              id='role'
-              placeholder='Product Designer'
-              name='role'
+              type="text"
+              className="form-control"
+              id="role"
+              placeholder="Product Designer"
+              name="role"
               value={form.role}
               onChange={handleChange}
             />
@@ -190,47 +191,48 @@ export const FormCheckout = ({ tickets }) => {
         </div>
       </div>
 
-      <div className='payment-method mt-4'>
-        <div className='row row-cols-lg-8 row-cols-md-2 row-cols-1 justify-content-lg-center'>
-          <div className='form-title col-lg-8'>
+      <div className="payment-method mt-4">
+        <div className="row row-cols-lg-8 row-cols-md-2 row-cols-1">
+          <div className="form-title col-lg-8">
             <span>02</span>
             <div>Payment Method</div>
           </div>
         </div>
-        <div className='row row-cols-lg-8 row-cols-md-2 row-cols-1 justify-content-center gy-4 gy-md-0'>
+        <div className="row row-cols-lg-8 row-cols-md-2 row-cols-1 gy-4 gy-md-0">
           {payments.map((payment, i) => (
-            <div className='col-lg-4' key={payment._id}>
-              <label className='payment-radio h-100 d-flex justify-content-between align-items-center'>
-                <div className='d-flex align-items-center gap-4'>
+            <div className="col-lg-6" key={payment._id}>
+              <label className="payment-radio h-100 d-flex justify-content-between align-items-center">
+                <div className="d-flex align-items-center gap-4">
                   <img
-                    src={`${process.env.NEXT_PUBLIC_API_IMAGE}/${payment.imageUrl}`}
-                    alt=''
+                    src={`${process.env.NEXT_PUBLIC_API}/${payment.image.name}`}
+                    alt=""
+                    style={{ width: '50px', height: '50px', objectFit: 'contain'}}
                   />
                   <div>{payment.type}</div>
                 </div>
                 <input
-                  type='radio'
+                  type="radio"
                   checked={payment.isChecked}
-                  name='isChecked'
+                  name="isChecked"
                   value={payment._id}
                   onChange={(e) => handleChangePayment(e, i)}
                 />
-                <span className='checkmark'></span>
+                <span className="checkmark"></span>
               </label>
             </div>
           ))}
         </div>
       </div>
 
-      <div className='d-flex flex-column align-items-center footer-payment gap-4'>
-        <Button variant='btn-green' action={() => handleSubmit()}>
+      <div className="d-flex flex-column align-items-start footer-payment gap-4">
+        <Button variant="btn-green" action={() => handleSubmit()}>
           Pay Now
         </Button>
         <div>
-          <img src='/icons/ic-secure.svg' alt='' />
+          <img src="/icons/ic-secure.svg" alt="" />
           <span>Your payment is secure and encrypted</span>
         </div>
       </div>
     </form>
   );
-}
+};
