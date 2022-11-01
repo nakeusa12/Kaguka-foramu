@@ -57,7 +57,7 @@ export default function DetailId({ detailPage, id }) {
         <img
           src={`${process.env.NEXT_PUBLIC_API}/${detailPage.image.name}`}
           className="img-content"
-          alt="semina"
+          alt="kaguka-detail"
         />
       </div>
       <div className="details-content container">
@@ -83,7 +83,15 @@ export default function DetailId({ detailPage, id }) {
               <h6>Event Location</h6>
               <div className="map-placeholder">
                 <div className="maps">
-                  <img src="/images/maps.png" alt="" />
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63536.63871717301!2d95.32870249999999!3d5.5611019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3040377ae63dbcdf%3A0x3039d80b220cb90!2sBanda%20Aceh%2C%20Banda%20Aceh%20City%2C%20Aceh!5e0!3m2!1sen!2sid!4v1667287348245!5m2!1sen!2sid"
+                    width="550"
+                    height="300"
+                    style={{ border: 0 }}
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                  ></iframe>
                   <div
                     className="absolute d-flex justify-content-center align-items-center"
                     id="hoverMe"
@@ -102,8 +110,9 @@ export default function DetailId({ detailPage, id }) {
             <div className="d-flex align-items-center gap-3 mt-3">
               <img
                 src={`${process.env.NEXT_PUBLIC_API}/${detailPage?.talent?.image?.name}`}
-                alt="semina"
+                alt="speaker"
                 width="60"
+                style={{ borderRadius: '50%'}}
               />
               <div>
                 <div className="speaker-name">{detailPage?.talent?.name}</div>
