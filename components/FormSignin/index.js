@@ -30,6 +30,7 @@ export const FormSignin = () => {
       progress: undefined,
     });
     Cookies.set('token', res.data.token);
+    Cookies.set('name', res.data.name);
     router.push('/');
   };
 
