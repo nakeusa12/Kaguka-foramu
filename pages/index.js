@@ -17,8 +17,8 @@ export default function Home({ data }) {
       </Head>
 
       <main>
-        <Header />
-        <Brand />
+        {/* <Header /> */}
+        {/* <Brand />/ */}
         <CardEvent data={data} title='Featured Events' subTitle='Grow Today' />
         <Stories />
         <Statistics />

@@ -1,7 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 import Cookies from "js-cookie";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Button from "../../components/Button";
 import { Footer } from "../../components/Footer";
 import { Stories } from "../../components/Stories";
@@ -52,42 +53,42 @@ export default function DetailId({ detailPage, id }) {
         <Navbar />
       </section>
 
-      <div className='preview-image bg-navy text-center'>
+      <div className="preview-image bg-navy text-center">
         <img
-          src='/images/details-image.png'
-          className='img-content'
-          alt='semina'
+          src={`${process.env.NEXT_PUBLIC_API}/${detailPage.image.name}`}
+          className="img-content"
+          alt="semina"
         />
       </div>
-      <div className='details-content container'>
-        <div className='d-flex flex-wrap justify-content-lg-center gap'>
-          <div className='d-flex flex-column description'>
-            <div className='headline'>{detailPage.title}</div>
+      <div className="details-content container">
+        <div className="d-flex flex-wrap justify-content-lg-center gap">
+          <div className="d-flex flex-column description">
+            <div className="headline">{detailPage.title}</div>
             <br />
-            <div className='event-details'>
+            <div className="event-details">
               <h6>Event Details</h6>
-              <p className='details-paragraph'>{detailPage.about}</p>
+              <p className="details-paragraph">{detailPage.about}</p>
             </div>
-            <div className='keypoints'>
+            <div className="keypoints">
               {detailPage.keyPoint.map((key, i) => {
                 return (
-                  <div className='d-flex align-items-start gap-3' key={i}>
-                    <img src='/icons/ic-check.svg' alt='semina' />
+                  <div className="d-flex align-items-start gap-3" key={i}>
+                    <img src="/icons/ic-check.svg" alt="semina" />
                     <span>{key}</span>
                   </div>
                 );
               })}
             </div>
-            <div className='map-location'>
+            <div className="map-location">
               <h6>Event Location</h6>
-              <div className='map-placeholder'>
-                <div className='maps'>
-                  <img src='/images/maps.png' alt='' />
+              <div className="map-placeholder">
+                <div className="maps">
+                  <img src="/images/maps.png" alt="" />
                   <div
-                    className='absolute d-flex justify-content-center align-items-center'
-                    id='hoverMe'
+                    className="absolute d-flex justify-content-center align-items-center"
+                    id="hoverMe"
                   >
-                    <a href='#' className='btn-navy' id='btn-maps'>
+                    <a href="#" className="btn-navy" id="btn-maps">
                       View in Google Maps
                     </a>
                   </div>
@@ -96,46 +97,46 @@ export default function DetailId({ detailPage, id }) {
             </div>
           </div>
 
-          <div className='d-flex flex-column card-event'>
+          <div className="d-flex flex-column card-event">
             <h6>Your Speaker</h6>
-            <div className='d-flex align-items-center gap-3 mt-3'>
+            <div className="d-flex align-items-center gap-3 mt-3">
               <img
                 src={`${process.env.NEXT_PUBLIC_API}/${detailPage?.talent?.image?.name}`}
-                alt='semina'
-                width='60'
+                alt="semina"
+                width="60"
               />
               <div>
-                <div className='speaker-name'>{detailPage?.talent?.name}</div>
-                <span className='occupation'>{detailPage?.talent?.role}</span>
+                <div className="speaker-name">{detailPage?.talent?.name}</div>
+                <span className="occupation">{detailPage?.talent?.role}</span>
               </div>
             </div>
             <hr />
 
             <h6>Get Ticket</h6>
-            {detailPage.tickets.map((ticket) => (
-              <>
+            {detailPage.tickets.map((ticket, index) => (
+              <Fragment key={index}>
                 {ticket.statusTicketCategories ? (
                   <>
-                    <div className='price my-3'>
-                      {ticket.price === 0 ? 'free' : `$${ticket.price}`}
+                    <div className="price my-3">
+                      {ticket.price === 0 ? "free" : `$${ticket.price}`}
                       <span>/person</span>
                     </div>
-                    <div className='d-flex gap-3 align-items-center card-details'>
-                      <img src='/icons/ic-marker.svg' alt='semina' />{' '}
+                    <div className="d-flex gap-3 align-items-center card-details">
+                      <img src="/icons/ic-marker.svg" alt="semina" />{" "}
                       {detailPage.venueName}
                     </div>
-                    <div className='d-flex gap-3 align-items-center card-details'>
-                      <img src='/icons/ic-time.svg' alt='semina' />{' '}
-                      {moment(detailPage.date).format('HH.MM A')}
+                    <div className="d-flex gap-3 align-items-center card-details">
+                      <img src="/icons/ic-time.svg" alt="semina" />{" "}
+                      {moment(detailPage.date).format("HH.MM A")}
                     </div>
-                    <div className='d-flex gap-3 align-items-center card-details'>
-                      <img src='/icons/ic-calendar.svg' alt='semina' />{' '}
+                    <div className="d-flex gap-3 align-items-center card-details">
+                      <img src="/icons/ic-calendar.svg" alt="semina" />{" "}
                       {formatDate(detailPage.date)}
                     </div>
 
                     {detailPage.stock !== 0 && (
                       <Button
-                        variant={'btn-green'}
+                        variant={"btn-green"}
                         action={() =>
                           handleSubmit(ticket._id, detailPage.organizer)
                         }
@@ -145,15 +146,15 @@ export default function DetailId({ detailPage, id }) {
                     )}
                   </>
                 ) : (
-                  ''
+                  ""
                 )}
-              </>
+              </Fragment>
             ))}
           </div>
         </div>
       </div>
 
-      <CardEvent data={data} title='Similiar Events' subTitle='Next One' />
+      <CardEvent data={data} title="Similiar Events" subTitle="Next One" />
       <Stories />
       <Statistics />
       <Footer />

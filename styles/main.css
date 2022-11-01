@@ -409,10 +409,9 @@ footer .all-rights {
   margin-top: 20px;
 }
 .details-content .description .keypoints {
-  margin-top: 50px;
   line-height: 26px;
 }
-.details-content .description .keypoints div {
+.details-content .description .keypoints div:last-child {
   margin-top: 16px;
 }
 .details-content .description .map-location {

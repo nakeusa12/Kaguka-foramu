@@ -1,8 +1,19 @@
+/* eslint-disable @next/next/no-img-element */
 import { CardTitle } from "../CardTitle";
 import Link from "next/link";
 import { formatDate } from "../../utils/formatDate";
+import { Fragment } from "react";
 
 export const CardEvent = ({ data, title, subTitle }) => {
+
+  // Mengubah Format Mata uang
+  const formatCurrency = (nominal) => {
+    return nominal.toLocaleString("id-ID", {
+      style: "currency",
+      currency: "IDR",
+    });
+  };
+
   return (
     <section className="grow-today">
       <div className="container">
@@ -12,18 +23,15 @@ export const CardEvent = ({ data, title, subTitle }) => {
             <div className="col-lg-3 col-md-6 col-12" key={index}>
               <div className="card-grow h-100">
                 <span className="badge-pricing">
-                  {/* {data.tickets.map((t) => (
-                    <>
-                      {t.statusTicketCategories
-                        ? t.price === 0
-                          ? "free"
-                          : t.price
-                        : ""}
-                    </>
-                  ))} */}
-                  {data.tickets[0].price === 0
-                    ? "free"
-                    : `$${data.tickets[0].price}`}
+                  {data.tickets
+                    .filter((ticket) => ticket.type === "Normal")
+                    .map((ticket, index) => (
+                      <Fragment key={index}>
+                        {ticket.price === 0
+                          ? "Free"
+                          : `${formatCurrency(ticket.price)}`}
+                      </Fragment>
+                    ))}
                 </span>
                 <img
                   src={`${process.env.NEXT_PUBLIC_API}/${data.image.name}`}
