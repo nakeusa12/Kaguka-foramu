@@ -76,7 +76,7 @@ export const Navbar = ({ response }) => {
                       aria-expanded="false"
                       aria-controls="collapseExample"
                     >
-                      <img src="/images/avatar.png" alt="semina" width="30" />
+                      <img src="/images/avatar.png" alt="kaguka" width="30" />
                     </a>
 
                     <ul
