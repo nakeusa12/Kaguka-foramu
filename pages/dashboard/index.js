@@ -5,6 +5,7 @@ import Head from "next/head";
 import { Footer } from "../../components/Footer";
 import { Navbar } from "../../components/Navbar";
 import { getData } from "../../utils/fetchData";
+import { formatCurrency } from "../../utils/formatCurrency";
 import { formatDate } from "../../utils/formatDate";
 
 export default function Dashboard({ data }) {
@@ -43,11 +44,12 @@ export default function Dashboard({ data }) {
                 </div>
                 <div className='d-flex align-items-center gap-3'>
                   <img src='/icons/ic-calendar-white.svg' alt='' />
-                  <span>{formatDate(data.historyEvent.date)}</span>
+                  {/* <span>{formatDate(data.historyEvent.date)}</span> */}
+                  <span>{data.historyEvent.date}</span>
                 </div>
               </div>
               <div className='total-price'>
-                {data.totalPay === 0 ? 'free' : `$${data.totalPay}`}
+                {data.totalPay === 0 ? 'free' : `${formatCurrency(data.totalPay)}`}
               </div>
             </div>
           ))}
