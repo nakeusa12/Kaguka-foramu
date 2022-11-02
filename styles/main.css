@@ -676,3 +676,24 @@ footer .all-rights {
   box-shadow: none;
   border-color: #01FB34;
 }/*# sourceMappingURL=main.css.map */
+
+
+.button-to-top{
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  z-index: 10;
+  background-color: #01FB34;
+  border-radius: 100%;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 14px;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.button-to-top:hover{
+  background-color: #02dd2e;
+}
