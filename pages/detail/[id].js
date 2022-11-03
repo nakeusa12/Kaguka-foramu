@@ -79,13 +79,13 @@ export default function DetailId({ detailPage, id }) {
               <div className="map-placeholder">
                 <div className="maps">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63536.63871717301!2d95.32870249999999!3d5.5611019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3040377ae63dbcdf%3A0x3039d80b220cb90!2sBanda%20Aceh%2C%20Banda%20Aceh%20City%2C%20Aceh!5e0!3m2!1sen!2sid!4v1667287348245!5m2!1sen!2sid"
+                    src={detailPage.mapsCity}
                     width="550"
                     height="300"
                     style={{ border: 0 }}
-                    allowfullscreen=""
+                    allowFullScreen=""
                     loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
+                    referrerPolicy="no-referrer-when-downgrade"
                   ></iframe>
                   <div
                     className="absolute d-flex justify-content-center align-items-center"
@@ -178,7 +178,6 @@ export async function getServerSideProps(context) {
   const req = await getData(`api/v1/events/${context.params.id}`);
 
   const res = req.data;
-  console.log(res);
 
   return {
     props: { detailPage: res, id: context.params.id },

@@ -28,6 +28,7 @@ export default function Dashboard({ data }) {
             <div
               className='event-details container d-flex flex-wrap justify-content-lg-center align-items-center gap-5'
               key={data._id}
+              style={{ marginTop: '2rem'}}
             >
               <div className='d-flex flex-column gap-3'>
                 <h5>{data.historyEvent.title}</h5>
@@ -44,8 +45,7 @@ export default function Dashboard({ data }) {
                 </div>
                 <div className='d-flex align-items-center gap-3'>
                   <img src='/icons/ic-calendar-white.svg' alt='' />
-                  {/* <span>{formatDate(data.historyEvent.date)}</span> */}
-                  <span>{data.historyEvent.date}</span>
+                  <span>{moment(data.historyEvent.date).format("dddd, MMMM DD YYYY")}</span>
                 </div>
               </div>
               <div className='total-price'>

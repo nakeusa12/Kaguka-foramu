@@ -9,7 +9,6 @@ export const Navbar = ({ response }) => {
   const router = useRouter();
   const [token, setToken] = useState("");
   const [name, setName] = useState("");
-  console.log(name);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -18,7 +17,6 @@ export const Navbar = ({ response }) => {
   });
 
   const handleLogout = () => {
-    console.log("click");
     Cookies.remove("token");
     Cookies.remove("name");
     router.push("/");

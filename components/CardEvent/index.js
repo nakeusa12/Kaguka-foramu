@@ -28,7 +28,7 @@ export const CardEvent = ({ data, title, subTitle }) => {
                 </span>
                 <img
                   src={`${process.env.NEXT_PUBLIC_API}/${data.image.name}`}
-                  alt="semina"
+                  alt={data.title}
                 />
                 <div className="card-content">
                   <div className="card-title">{data.title}</div>
